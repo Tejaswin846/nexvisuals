@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nex Visuals — Premium Creative Studio</title>
+  <meta name="description" content="Nex Visuals creates premium visual design assets for brands, creators, and businesses that want a high-end digital presence." />
+  <style>
+    :root{
+      --line:rgba(255,255,255,.08);
+      --text:#f4f7fb;
+      --muted:#aab3c5;
+      --soft:#d9e2f2;
+      --accent:#f6c56e;
+      --accent-2:#7ad7ff;
+      --success:#8cffc7;
+      --shadow:0 20px 60px rgba(0,0,0,.42);
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(122,215,255,.10), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(246,197,110,.12), transparent 25%),
+        linear-gradient(180deg, #06070a 0%, #090b10 35%, #0a0d13 100%);
+      color:var(--text);
+      line-height:1.55;
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{width:min(calc(100% - 32px), var(--max));margin:0 auto}
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(18px);
+      background:rgba(8,10,14,.72);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .topbar-inner{
+      display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 0;
+    }
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.3px}
+    .brand-mark{
+      width:38px;height:38px;border-radius:14px;
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow:0 10px 30px rgba(122,215,255,.18);
+      position:relative;overflow:hidden;
+    }
+    .brand-mark::before,.brand-mark::after{
+      content:"";position:absolute;border-radius:999px;background:rgba(8,10,14,.85);
+    }
+    .brand-mark::before{width:18px;height:18px;right:4px;top:4px}
+    .brand-mark::after{width:14px;height:14px;left:6px;bottom:6px}
+    .nav{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .nav a,.nav button{
+      color:var(--muted);font-size:.96rem;padding:10px 14px;border-radius:999px;
+      transition:.22s ease;background:none;border:none;cursor:pointer;font:inherit;
+    }
+    .nav a:hover,.nav button:hover{background:rgba(255,255,255,.06);color:var(--text)}
+    .nav .cta{
+      background:linear-gradient(135deg, var(--accent), #ffd999);
+      color:#111;padding:11px 16px;font-weight:700;box-shadow:0 14px 30px rgba(246,197,110,.18);
+    }
+    .menu-btn{
+      display:none;background:transparent;border:1px solid var(--line);color:var(--text);
+      border-radius:12px;padding:10px 12px;font-size:1rem;
+    }
+    .mobile-menu{display:none;padding:0 0 16px 0}
+    .mobile-menu.open{display:block}
+    .mobile-menu a{
+      display:block;width:100%;text-align:left;padding:12px 14px;border:1px solid var(--line);border-radius:14px;
+      color:var(--soft);margin-top:10px;background:rgba(255,255,255,.02)
+    }
+
+    .hero{padding:72px 0 34px}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:stretch}
+    .hero-card,.showcase-card,.stat-card,.section-card,.work-card,.process-card,.faq-item,.contact-card,.package-card,.note-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
+      border:1px solid var(--line);box-shadow:var(--shadow)
+    }
+    .hero-card{padding:34px;border-radius:30px;position:relative;overflow:hidden}
+    .hero-card::after{
+      content:"";position:absolute;inset:auto -10% -30% auto;width:280px;height:280px;border-radius:50%;
+      background:radial-gradient(circle, rgba(122,215,255,.16), transparent 65%);pointer-events:none;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.03);color:var(--soft);font-size:.85rem;margin-bottom:18px;
+    }
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 0 6px rgba(140,255,199,.09)}
+    h1{font-size:clamp(2.5rem, 5vw, 4.8rem);line-height:.98;letter-spacing:-.04em;margin:0 0 18px 0}
+    .hero p{color:var(--muted);font-size:1.08rem;max-width:58ch;margin:0 0 28px 0}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+    .btn{
+      appearance:none;border:none;cursor:pointer;font:inherit;padding:14px 18px;border-radius:14px;
+      font-weight:700;transition:.22s ease;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    }
+    .btn-primary{color:#111;background:linear-gradient(135deg, var(--accent), #ffe2b0);box-shadow:0 18px 38px rgba(246,197,110,.18)}
+    .btn-secondary{background:rgba(255,255,255,.04);color:var(--text);border:1px solid var(--line)}
+    .btn:hover{transform:translateY(-1px)}
+    .hero-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+    .stat-card{border-radius:18px;padding:18px}
+    .stat-number{font-size:1.35rem;font-weight:800;margin-bottom:6px}
+    .stat-label{color:var(--muted);font-size:.92rem}
+
+    .showcase-card{
+      padding:18px;border-radius:30px;display:grid;grid-template-rows:auto 1fr auto;gap:16px;min-height:100%;
+    }
+    .screen{
+      background:linear-gradient(180deg, #0d1119, #0a0d14);border:1px solid rgba(255,255,255,.06);
+      border-radius:24px;padding:14px;display:grid;gap:14px;min-height:430px;
+    }
+    .screen-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.9rem}
+    .pills{display:flex;gap:8px;flex-wrap:wrap}
+    .pill{
+      padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.05);
+      color:#dce5f5;font-size:.82rem;
+    }
+    .mock-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .mock{
+      min-height:140px;border-radius:18px;padding:16px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+        linear-gradient(135deg, rgba(246,197,110,.10), rgba(122,215,255,.08));
+      border:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;justify-content:space-between;
+    }
+    .mock.large{grid-column:1/-1;min-height:180px}
+    .mock h3,.work-card h3,.process-card h3,.contact-card h3,.faq-q,.section-title,.package-card h3{margin:0 0 8px 0}
+    .mini-lines{display:grid;gap:8px}
+    .mini-lines span{display:block;height:10px;border-radius:999px;background:rgba(255,255,255,.09)}
+    .mini-lines span:nth-child(1){width:82%}
+    .mini-lines span:nth-child(2){width:63%}
+    .mini-lines span:nth-child(3){width:47%}
+    .tag{
+      display:inline-flex;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.06);font-size:.78rem;color:var(--soft)
+    }
+    .note-card{padding:16px;border-radius:18px}
+
+    section{padding:24px 0 18px}
+    .section-head{
+      display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:20px;
+    }
+    .section-kicker{
+      color:var(--accent);text-transform:uppercase;letter-spacing:.16em;font-size:.78rem;font-weight:800;margin-bottom:10px;
+    }
+    .section-title{font-size:clamp(1.7rem, 3vw, 2.5rem);line-height:1.05;letter-spacing:-.03em}
+    .section-sub{color:var(--muted);max-width:62ch}
+
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .section-card{border-radius:22px;padding:22px}
+    .service-icon{
+      width:46px;height:46px;border-radius:14px;margin-bottom:16px;
+      background:linear-gradient(135deg, rgba(246,197,110,.22), rgba(122,215,255,.20));
+      border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-weight:900;color:var(--text)
+    }
+    .section-card p{color:var(--muted);margin:0}
+    .section-card ul{margin:14px 0 0 0;padding-left:18px;color:var(--soft)}
+    .section-card li{margin-bottom:8px}
+
+    .packages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .package-card{border-radius:24px;padding:24px;position:relative}
+    .badge{
+      display:inline-block;padding:9px 12px;border-radius:999px;background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);font-size:.82rem;font-weight:800;margin-bottom:14px;
+    }
+    .package-price{font-size:clamp(2.2rem,4vw,3.4rem);font-weight:900;letter-spacing:-.05em;margin:10px 0}
+    .package-card p{color:var(--muted)}
+    .package-card ul{margin:14px 0 18px 0;padding-left:18px;color:var(--soft)}
+    .package-card li{margin-bottom:8px}
+    .highlight-ring{
+      outline:1px solid rgba(246,197,110,.35);
+      box-shadow:0 20px 60px rgba(0,0,0,.42), 0 0 0 1px rgba(246,197,110,.12) inset;
+    }
+
+    .work-controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+    .filter-btn{
+      background:rgba(255,255,255,.03);color:var(--soft);border:1px solid var(--line);
+      padding:11px 14px;border-radius:999px;cursor:pointer;font:inherit;font-weight:600;
+    }
+    .filter-btn.active{
+      background:linear-gradient(135deg, rgba(246,197,110,.22), rgba(122,215,255,.16));color:var(--text);
+    }
+    .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .work-card{border-radius:24px;overflow:hidden;display:flex;flex-direction:column}
+    .work-media{
+      aspect-ratio:4/3;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(122,215,255,.24), transparent 28%),
+        radial-gradient(circle at 80% 30%, rgba(246,197,110,.22), transparent 24%),
+        linear-gradient(160deg, #161c28, #0b0e14 65%);
+      border-bottom:1px solid rgba(255,255,255,.06);position:relative;
+    }
+    .work-media::after{content:"";position:absolute;inset:16px;border-radius:18px;border:1px solid rgba(255,255,255,.08)}
+    .work-body{padding:18px}
+    .work-meta{
+      display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--muted);font-size:.92rem;margin-bottom:10px;
+    }
+    .work-card p{color:var(--muted);margin:0 0 14px 0}
+    .linkish{color:var(--accent-2);font-weight:700;cursor:pointer;background:none;border:none;padding:0}
+
+    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .process-card{padding:20px;border-radius:22px}
+    .step{
+      display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border-radius:12px;
+      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06);margin-bottom:14px;font-weight:900;color:var(--accent);
+    }
+    .process-card p{color:var(--muted);margin:0}
+
+    .faq-list{display:grid;gap:14px}
+    .faq-item{border-radius:18px;overflow:hidden}
+    .faq-btn{
+      width:100%;background:none;border:none;color:var(--text);font:inherit;text-align:left;cursor:pointer;
+      padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+    }
+    .faq-a{display:none;padding:0 20px 18px 20px;color:var(--muted)}
+    .faq-item.open .faq-a{display:block}
+    .faq-item.open .faq-plus{transform:rotate(45deg)}
+    .faq-plus{
+      width:28px;height:28px;border-radius:10px;border:1px solid rgba(255,255,255,.08);
+      display:flex;align-items:center;justify-content:center;color:var(--soft);transition:.2s ease;flex:0 0 auto;
+    }
+
+    .contact-grid{display:grid;grid-template-columns:.88fr 1.12fr;gap:18px}
+    .contact-card{border-radius:24px;padding:22px}
+    .contact-card p{color:var(--muted)}
+    .contact-list{display:grid;gap:12px;margin-top:18px}
+    .contact-link{
+      display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 16px;border-radius:16px;
+      background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);color:var(--soft)
+    }
+    form{display:grid;gap:14px}
+    .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    input,textarea,select{
+      width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);
+      color:var(--text);border-radius:14px;padding:14px 15px;font:inherit;outline:none;
+    }
+    textarea{min-height:150px;resize:vertical}
+    input::placeholder,textarea::placeholder{color:#8390a6}
+    .footer{padding:26px 0 50px;color:var(--muted)}
+    .footer-bar{
+      display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.08);padding-top:18px;
+    }
+
+    .modal{
+      position:fixed;inset:0;background:rgba(4,5,8,.72);display:none;place-items:center;padding:18px;z-index:80;backdrop-filter: blur(10px);
+    }
+    .modal.open{display:grid}
+    .modal-card{
+      width:min(760px,100%);border-radius:28px;background:linear-gradient(180deg, #10141c, #0c1016);
+      border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow);overflow:hidden;
+    }
+    .modal-visual{
+      height:260px;
+      background:
+        radial-gradient(circle at 25% 20%, rgba(122,215,255,.26), transparent 26%),
+        radial-gradient(circle at 75% 28%, rgba(246,197,110,.24), transparent 22%),
+        linear-gradient(160deg, #161d29, #0c1017 66%);
+      border-bottom:1px solid rgba(255,255,255,.07);
+    }
+    .modal-body{padding:22px}
+    .modal-top{display:flex;justify-content:space-between;gap:16px;align-items:start}
+    .close-btn{
+      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--text);
+      width:40px;height:40px;border-radius:12px;cursor:pointer;font-size:1.1rem;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid,.contact-grid,.services,.packages-grid,.work-grid,.process-grid{grid-template-columns:1fr}
+      .hero-meta,.field-grid{grid-template-columns:1fr}
+    }
+    @media (max-width: 760px){
+      .nav{display:none}
+      .menu-btn{display:inline-flex}
+      .hero{padding-top:48px}
+      .hero-card,.showcase-card,.contact-card,.package-card{padding:20px}
+      .container{width:min(calc(100% - 20px), var(--max))}
+      h1{font-size:2.45rem}
+      .mock-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <a href="#top" class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>Nex Visuals</span>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <a href="#services">Services</a>
+          <a href="#packages">Packages</a>
+          <a href="#work">Work</a>
+          <a href="#process">Process</a>
+          <a href="#contact" class="cta">Book a Project</a>
+        </nav>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      </div>
+
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#services">Services</a>
+        <a href="#packages">Packages</a>
+        <a href="#work">Work</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Book a Project</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <div class="eyebrow"><span class="dot"></span> Premium visual design for serious brands</div>
+          <h1>Agency-level visuals that make your brand look expensive.</h1>
+          <p>
+            Nex Visuals helps creators, startups, and businesses present themselves with premium digital visuals.
+            Clean direction, strong composition, polished execution, and a studio-grade finish.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Start Your Project</a>
+            <a class="btn btn-secondary" href="#packages">View Packages</a>
+          </div>
+          <div class="hero-meta">
+            <div class="stat-card"><div class="stat-number">24–72 hrs</div><div class="stat-label">Fast delivery window</div></div>
+            <div class="stat-card"><div class="stat-number">Premium look</div><div class="stat-label">Built for client trust</div></div>
+            <div class="stat-card"><div class="stat-number">Custom offers</div><div class="stat-label">Flexible package options</div></div>
+          </div>
+        </div>
+
+        <aside class="showcase-card">
+          <div class="screen">
+            <div class="screen-top"><strong>Studio Preview</strong><span>Curated presentation</span></div>
+            <div class="pills">
+              <span class="pill">Brand Posters</span>
+              <span class="pill">Product Visuals</span>
+              <span class="pill">Launch Assets</span>
+            </div>
+            <div class="mock-grid">
+              <div class="mock"><div><h3>Luxury Poster</h3><div class="mini-lines"><span></span><span></span><span></span></div></div><span class="tag">Social Campaign</span></div>
+              <div class="mock"><div><h3>Product Graphic</h3><div class="mini-lines"><span></span><span></span><span></span></div></div><span class="tag">Brand Asset</span></div>
+              <div class="mock large"><div><h3>Creative Direction Board</h3><div class="mini-lines"><span></span><span></span><span></span></div></div><span class="tag">Agency Presentation Style</span></div>
+            </div>
+          </div>
+          <div class="note-card"><strong>Built for people who want quality, not average design.</strong></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="section-kicker">Services</div><div class="section-title">What Nex Visuals delivers</div></div>
+          <div class="section-sub">High-end visuals designed to improve presentation, increase perceived value, and make your brand look more established.</div>
+        </div>
+        <div class="services">
+          <article class="section-card">
+            <div class="service-icon">01</div>
+            <h3>Brand Visual Design</h3>
+            <p>Clean, premium visual assets for pages, campaigns, and digital presence.</p>
+            <ul><li>Posters and campaign graphics</li><li>Premium brand presentation visuals</li><li>Social media design direction</li></ul>
+          </article>
+          <article class="section-card">
+            <div class="service-icon">02</div>
+            <h3>Creative Ad Assets</h3>
+            <p>Sharp promotional visuals that feel polished and attention-worthy.</p>
+            <ul><li>Product promotion images</li><li>Launch and announcement creatives</li><li>High-conversion visual layouts</li></ul>
+          </article>
+          <article class="section-card">
+            <div class="service-icon">03</div>
+            <h3>Studio Packaging</h3>
+            <p>A structured delivery style that makes the work feel client-ready and professional.</p>
+            <ul><li>Organized file delivery</li><li>Clear revisions workflow</li><li>Professional communication format</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="packages">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="section-kicker">Packages</div><div class="section-title">Choose the package that fits your project</div></div>
+          <div class="section-sub">Everything is included in one site now. Clients can scroll here and see all pricing clearly.</div>
+        </div>
+        <div class="packages-grid">
+          <article class="package-card">
+            <div class="badge">Starter</div>
+            <h3>3 Premium Images</h3>
+            <div class="package-price">₹10,000</div>
+            <p>Best for a first project, launch creative, or a small premium visual set.</p>
+            <ul>
+              <li>3 final high-quality images</li>
+              <li>Premium visual direction</li>
+              <li>1 revision round</li>
+              <li>Fast clean delivery</li>
+            </ul>
+            <a class="btn btn-primary" href="#contact">Choose Starter</a>
+          </article>
+
+          <article class="package-card highlight-ring">
+            <div class="badge">Premium</div>
+            <h3>5 Premium Images</h3>
+            <div class="package-price">₹25,000</div>
+            <p>For bigger launches, stronger social presentation, or more complete visual coverage.</p>
+            <ul>
+              <li>5 final high-quality images</li>
+              <li>Stronger campaign consistency</li>
+              <li>1 revision round</li>
+              <li>Elevated premium presentation</li>
+            </ul>
+            <a class="btn btn-primary" href="#contact">Choose 5 Images</a>
+          </article>
+
+          <article class="package-card">
+            <div class="badge">Top Tier</div>
+            <h3>6 Premium Images</h3>
+            <div class="package-price">₹32,000</div>
+            <p>For brands that want the most complete premium package from the listed offers.</p>
+            <ul>
+              <li>6 final high-quality images</li>
+              <li>Highest visual coverage</li>
+              <li>1 revision round</li>
+              <li>Premium client-facing delivery</li>
+            </ul>
+            <a class="btn btn-primary" href="#contact">Choose 6 Images</a>
+          </article>
+        </div>
+
+        <div class="note-card" style="margin-top:18px;">
+          <strong>Custom Package</strong>
+          <div style="color:var(--muted);margin-top:8px;">Need a different number of visuals or a larger project scope? Clients can request a custom quote through the contact form below.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="section-kicker">Selected work</div><div class="section-title">Portfolio-style showcase</div></div>
+          <div class="section-sub">These are polished placeholder case cards you can present right away. You can later replace the text with your real projects.</div>
+        </div>
+        <div class="work-controls">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="brand">Brand</button>
+          <button class="filter-btn" data-filter="product">Product</button>
+          <button class="filter-btn" data-filter="campaign">Campaign</button>
+        </div>
+        <div class="work-grid">
+          <article class="work-card" data-type="brand">
+            <div class="work-media"></div>
+            <div class="work-body">
+              <div class="work-meta"><span class="tag">Brand</span><span>Luxury visual identity</span></div>
+              <h3>Obsidian Launch Set</h3>
+              <p>Premium black-and-gold campaign visuals created to make a new brand feel established from day one.</p>
+              <button class="linkish" data-project="obsidian">View details</button>
+            </div>
+          </article>
+          <article class="work-card" data-type="product">
+            <div class="work-media"></div>
+            <div class="work-body">
+              <div class="work-meta"><span class="tag">Product</span><span>High-end product focus</span></div>
+              <h3>Nova Product Graphics</h3>
+              <p>Clean product-focused compositions with depth, contrast, and strong premium presentation.</p>
+              <button class="linkish" data-project="nova">View details</button>
+            </div>
+          </article>
+          <article class="work-card" data-type="campaign">
+            <div class="work-media"></div>
+            <div class="work-body">
+              <div class="work-meta"><span class="tag">Campaign</span><span>Promotional rollout</span></div>
+              <h3>Velocity Promo Series</h3>
+              <p>Fast, bold launch visuals structured for social campaigns and brand awareness pushes.</p>
+              <button class="linkish" data-project="velocity">View details</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="section-kicker">Process</div><div class="section-title">How clients work with you</div></div>
+          <div class="section-sub">This is structured to feel trustworthy and easy to follow.</div>
+        </div>
+        <div class="process-grid">
+          <article class="process-card"><div class="step">1</div><h3>Inquiry</h3><p>The client shares what they need, the style they want, and the purpose of the visuals.</p></article>
+          <article class="process-card"><div class="step">2</div><h3>Direction</h3><p>You confirm the concept, scope, and package so expectations are clear from the start.</p></article>
+          <article class="process-card"><div class="step">3</div><h3>Design</h3><p>You create premium visuals with a polished, agency-style presentation approach.</p></article>
+          <article class="process-card"><div class="step">4</div><h3>Delivery</h3><p>The final files are delivered in a clean, professional way with room for one revision round.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="section-kicker">FAQ</div><div class="section-title">Common client questions</div></div>
+          <div class="section-sub">These reduce doubt and make the page feel more complete.</div>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item"><button class="faq-btn" type="button"><span class="faq-q">How long does delivery take?</span><span class="faq-plus">＋</span></button><div class="faq-a">Most projects can be delivered within 24 to 72 hours depending on the brief and revision needs.</div></div>
+          <div class="faq-item"><button class="faq-btn" type="button"><span class="faq-q">Can I request a specific style?</span><span class="faq-plus">＋</span></button><div class="faq-a">Yes. Clients can share reference visuals or explain the mood they want, and the direction can be built around that.</div></div>
+          <div class="faq-item"><button class="faq-btn" type="button"><span class="faq-q">Do revisions cost extra?</span><span class="faq-plus">＋</span></button><div class="faq-a">One revision round is included in the package. Additional revisions can be added later if you want.</div></div>
+          <div class="faq-item"><button class="faq-btn" type="button"><span class="faq-q">Can I request a custom package?</span><span class="faq-plus">＋</span></button><div class="faq-a">Yes. The site now includes a custom package option through the inquiry form for special requirements and bigger projects.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="section-kicker">Contact</div><div class="section-title">Let’s turn interest into inquiries</div></div>
+          <div class="section-sub">The form below is already functional. It opens the user's email app with the project details filled in.</div>
+        </div>
+        <div class="contact-grid">
+          <aside class="contact-card">
+            <h3>Reach Nex Visuals</h3>
+            <p>Replace these placeholders with your real details and the page is fully ready for clients.</p>
+            <div class="contact-list">
+              <a class="contact-link" href="mailto:nexvisuals.studio@gmail.com"><span>Email</span><strong>nexvisuals.studio@gmail.com</strong></a>
+              <a class="contact-link" href="https://instagram.com/nexvisuals.studio" target="_blank" rel="noopener noreferrer"><span>Instagram</span><strong>@nexvisuals.studio</strong></a>
+              <a class="contact-link" href="https://wa.me/910000000000" target="_blank" rel="noopener noreferrer"><span>WhatsApp</span><strong>+91 00000 00000</strong></a>
+            </div>
+          </aside>
+          <div class="contact-card">
+            <h3>Project inquiry form</h3>
+            <form id="inquiryForm">
+              <div class="field-grid">
+                <input type="text" id="name" placeholder="Your name" required />
+                <input type="text" id="brand" placeholder="Brand or business name" required />
+              </div>
+              <div class="field-grid">
+                <input type="email" id="email" placeholder="Your email" required />
+                <select id="package" required>
+                  <option value="">Select package</option>
+                  <option value="3 Premium Images — ₹10,000">3 Premium Images — ₹10,000</option>
+                  <option value="5 Premium Images — ₹25,000">5 Premium Images — ₹25,000</option>
+                  <option value="6 Premium Images — ₹32,000">6 Premium Images — ₹32,000</option>
+                  <option value="Custom Package">Custom Package</option>
+                </select>
+              </div>
+              <textarea id="details" placeholder="What kind of visuals do you need? Mention style, use case, and deadline." required></textarea>
+              <div class="hero-actions">
+                <button class="btn btn-primary" type="submit">Send Inquiry</button>
+                <button class="btn btn-secondary" id="copyEmailBtn" type="button">Copy Email</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer-bar">
+        <div>© <span id="year"></span> Nex Visuals. Premium design presentation.</div>
+        <div>Single-page agency website.</div>
+      </div>
+    </footer>
+  </main>
+
+  <div class="modal" id="projectModal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-visual"></div>
+      <div class="modal-body">
+        <div class="modal-top">
+          <div><div class="section-kicker" id="modalType">Project</div><h3 id="modalTitle" style="margin:0 0 10px 0;font-size:1.8rem;">Project title</h3></div>
+          <button class="close-btn" id="closeModal" aria-label="Close">✕</button>
+        </div>
+        <p id="modalText" style="color:var(--muted);margin:0;"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const workCards = document.querySelectorAll('.work-card');
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        workCards.forEach(card => {
+          const visible = filter === 'all' || card.dataset.type === filter;
+          card.style.display = visible ? 'flex' : 'none';
+        });
+      });
+    });
+
+    const projects = {
+      obsidian: { type: 'Brand Case', title: 'Obsidian Launch Set', text: 'A premium launch-direction concept using dark luxury styling, high-end typography, and clean campaign framing to make the brand feel established and expensive.' },
+      nova: { type: 'Product Case', title: 'Nova Product Graphics', text: 'A polished product presentation set focused on clarity, contrast, detail, and premium visual composition suitable for marketing use.' },
+      velocity: { type: 'Campaign Case', title: 'Velocity Promo Series', text: 'A faster-paced promotional set with stronger energy, sharper hierarchy, and social-first layouts designed to improve attention and click value.' }
+    };
+
+    const modal = document.getElementById('projectModal');
+    const modalType = document.getElementById('modalType');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalText = document.getElementById('modalText');
+    const closeModal = document.getElementById('closeModal');
+
+    document.querySelectorAll('[data-project]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = projects[btn.dataset.project];
+        if (!item) return;
+        modalType.textContent = item.type;
+        modalTitle.textContent = item.title;
+        modalText.textContent = item.text;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    function hideModal(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+    closeModal.addEventListener('click', hideModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) hideModal(); });
+
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-btn').addEventListener('click', () => item.classList.toggle('open'));
+    });
+
+    const inquiryForm = document.getElementById('inquiryForm');
+    inquiryForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const brand = document.getElementById('brand').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const pkg = document.getElementById('package').value;
+      const details = document.getElementById('details').value.trim();
+
+      const subject = encodeURIComponent(`Project Inquiry — ${brand || name}`);
+      const body = encodeURIComponent(
+`Hi Nex Visuals,
+
+My name is ${name}.
+Brand/Business: ${brand}
+Email: ${email}
+Selected Package: ${pkg}
+
+Project Details:
+${details}
+
+Please get back to me with the next steps.
+
+Thanks.`
+      );
+      window.location.href = `mailto:nexvisuals.studio@gmail.com?subject=${subject}&body=${body}`;
+    });
+
+    document.getElementById('copyEmailBtn').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText('nexvisuals.studio@gmail.com'); alert('Email copied.'); }
+      catch { alert('Could not copy email automatically.'); }
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
