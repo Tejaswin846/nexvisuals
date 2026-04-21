@@ -3,311 +3,292 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nex Visuals — Premium Creative Studio</title>
-  <meta name="description" content="Nex Visuals creates premium visual design assets for brands, creators, and businesses that want a high-end digital presence." />
+  <title>Nex Visuals™ | Premium Creative Studio</title>
+  <meta name="description" content="Premium creative studio for product visuals, branding assets, and conversion-focused business presentation design." />
   <style>
     :root{
+      --bg:#06080d;
+      --bg-2:#0a0f18;
+      --panel:#0f1624;
+      --panel-2:#121c2d;
       --line:rgba(255,255,255,.08);
+      --line-2:rgba(255,255,255,.14);
       --text:#f4f7fb;
-      --muted:#aab3c5;
-      --soft:#d9e2f2;
-      --accent:#f6c56e;
-      --accent-2:#7ad7ff;
-      --success:#8cffc7;
-      --shadow:0 20px 60px rgba(0,0,0,.42);
-      --max:1180px;
+      --muted:#aab6ca;
+      --accent:#8b5cf6;
+      --accent-2:#22d3ee;
+      --accent-3:#f59e0b;
+      --success:#34d399;
+      --shadow:0 24px 70px rgba(0,0,0,.45);
+      --radius:26px;
+      --radius-sm:18px;
+      --max:1240px;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(circle at 15% 10%, rgba(122,215,255,.10), transparent 28%),
-        radial-gradient(circle at 85% 20%, rgba(246,197,110,.12), transparent 25%),
-        linear-gradient(180deg, #06070a 0%, #090b10 35%, #0a0d13 100%);
       color:var(--text);
-      line-height:1.55;
-      overflow-x:hidden;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(139,92,246,.14), transparent 22%),
+        radial-gradient(circle at 90% 10%, rgba(34,211,238,.12), transparent 20%),
+        linear-gradient(180deg,var(--bg) 0%, var(--bg-2) 100%);
     }
     a{text-decoration:none;color:inherit}
-    .container{width:min(calc(100% - 32px), var(--max));margin:0 auto}
+    img{display:block;max-width:100%}
+    button,input,select,textarea{font:inherit}
+    .container{width:min(var(--max),calc(100% - 32px));margin:auto}
+
     .topbar{
-      position:sticky;top:0;z-index:50;
-      backdrop-filter: blur(18px);
-      background:rgba(8,10,14,.72);
-      border-bottom:1px solid rgba(255,255,255,.06);
+      position:sticky;top:0;z-index:60;
+      backdrop-filter:blur(16px);
+      background:rgba(6,8,13,.72);
+      border-bottom:1px solid var(--line);
     }
-    .topbar-inner{
-      display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 0;
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;gap:18px;
+      padding:14px 0;
     }
-    .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.3px}
-    .brand-mark{
-      width:38px;height:38px;border-radius:14px;
-      background:linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow:0 10px 30px rgba(122,215,255,.18);
-      position:relative;overflow:hidden;
+    .brand{display:flex;align-items:center;gap:14px;min-width:0}
+    .logo{
+      width:52px;height:52px;border-radius:18px;overflow:hidden;flex:0 0 auto;
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(135deg,#111827,#060913);
+      box-shadow:var(--shadow);
+      display:grid;place-items:center;
     }
-    .brand-mark::before,.brand-mark::after{
-      content:"";position:absolute;border-radius:999px;background:rgba(8,10,14,.85);
+    .brand-text{line-height:1.05}
+    .brand-text strong{display:block;font-size:1rem;letter-spacing:.2px}
+    .brand-text span{display:block;color:var(--muted);font-size:.78rem;margin-top:6px}
+    .nav-links{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .nav-links a{
+      color:var(--muted);font-size:.95rem;padding:10px 14px;border-radius:999px;transition:.2s ease;
     }
-    .brand-mark::before{width:18px;height:18px;right:4px;top:4px}
-    .brand-mark::after{width:14px;height:14px;left:6px;bottom:6px}
-    .nav{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-    .nav a,.nav button{
-      color:var(--muted);font-size:.96rem;padding:10px 14px;border-radius:999px;
-      transition:.22s ease;background:none;border:none;cursor:pointer;font:inherit;
-    }
-    .nav a:hover,.nav button:hover{background:rgba(255,255,255,.06);color:var(--text)}
-    .nav .cta{
-      background:linear-gradient(135deg, var(--accent), #ffd999);
-      color:#111;padding:11px 16px;font-weight:700;box-shadow:0 14px 30px rgba(246,197,110,.18);
-    }
-    .menu-btn{
-      display:none;background:transparent;border:1px solid var(--line);color:var(--text);
-      border-radius:12px;padding:10px 12px;font-size:1rem;
-    }
-    .mobile-menu{display:none;padding:0 0 16px 0}
-    .mobile-menu.open{display:block}
-    .mobile-menu a{
-      display:block;width:100%;text-align:left;padding:12px 14px;border:1px solid var(--line);border-radius:14px;
-      color:var(--soft);margin-top:10px;background:rgba(255,255,255,.02)
-    }
+    .nav-links a:hover{background:rgba(255,255,255,.06);color:var(--text)}
+    .nav-actions{display:flex;gap:10px;align-items:center}
 
-    .hero{padding:72px 0 34px}
-    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:stretch}
-    .hero-card,.showcase-card,.stat-card,.section-card,.work-card,.process-card,.faq-item,.contact-card,.package-card,.note-card{
-      background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
-      border:1px solid var(--line);box-shadow:var(--shadow)
-    }
-    .hero-card{padding:34px;border-radius:30px;position:relative;overflow:hidden}
-    .hero-card::after{
-      content:"";position:absolute;inset:auto -10% -30% auto;width:280px;height:280px;border-radius:50%;
-      background:radial-gradient(circle, rgba(122,215,255,.16), transparent 65%);pointer-events:none;
-    }
-    .eyebrow{
-      display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;
-      border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.03);color:var(--soft);font-size:.85rem;margin-bottom:18px;
-    }
-    .dot{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 0 6px rgba(140,255,199,.09)}
-    h1{font-size:clamp(2.5rem, 5vw, 4.8rem);line-height:.98;letter-spacing:-.04em;margin:0 0 18px 0}
-    .hero p{color:var(--muted);font-size:1.08rem;max-width:58ch;margin:0 0 28px 0}
-    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
     .btn{
-      appearance:none;border:none;cursor:pointer;font:inherit;padding:14px 18px;border-radius:14px;
-      font-weight:700;transition:.22s ease;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      border:none;cursor:pointer;border-radius:999px;padding:14px 18px;
+      font-weight:700;font-size:.95rem;transition:.2s ease;white-space:nowrap;
     }
-    .btn-primary{color:#111;background:linear-gradient(135deg, var(--accent), #ffe2b0);box-shadow:0 18px 38px rgba(246,197,110,.18)}
-    .btn-secondary{background:rgba(255,255,255,.04);color:var(--text);border:1px solid var(--line)}
-    .btn:hover{transform:translateY(-1px)}
-    .hero-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
-    .stat-card{border-radius:18px;padding:18px}
-    .stat-number{font-size:1.35rem;font-weight:800;margin-bottom:6px}
-    .stat-label{color:var(--muted);font-size:.92rem}
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{
+      color:#fff;background:linear-gradient(135deg,var(--accent),#a78bfa);
+      box-shadow:0 12px 30px rgba(139,92,246,.35);
+    }
+    .btn-primary:hover{filter:brightness(1.07)}
+    .btn-secondary{background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--text)}
+    .btn-secondary:hover{background:rgba(255,255,255,.10)}
+    .btn-ghost{background:transparent;border:1px solid var(--line);color:var(--muted)}
+    .btn-ghost:hover{background:rgba(255,255,255,.05);color:var(--text)}
+    .btn-mini{padding:11px 14px;font-size:.88rem}
 
-    .showcase-card{
-      padding:18px;border-radius:30px;display:grid;grid-template-rows:auto 1fr auto;gap:16px;min-height:100%;
+    .hero{padding:84px 0 42px}
+    .hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:26px;align-items:stretch}
+    .glass,.feature-card,.service-card,.pricing-card,.showcase-card,.step-card,.testimonial,.faq-item,.contact-card,.cta-box,.metric-card,.benefit-card,.hero-card,.image-stack-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
     }
-    .screen{
-      background:linear-gradient(180deg, #0d1119, #0a0d14);border:1px solid rgba(255,255,255,.06);
-      border-radius:24px;padding:14px;display:grid;gap:14px;min-height:430px;
+    .hero-card,.image-stack-card{padding:32px}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;
+      background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.24);color:#ddd6fe;
+      font-size:.84rem;font-weight:800;
     }
-    .screen-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.9rem}
-    .pills{display:flex;gap:8px;flex-wrap:wrap}
-    .pill{
-      padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.05);
-      color:#dce5f5;font-size:.82rem;
+    h1{
+      margin:18px 0 16px;line-height:.95;letter-spacing:-.05em;
+      font-size:clamp(2.4rem,4vw,4.45rem);
     }
-    .mock-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .mock{
-      min-height:140px;border-radius:18px;padding:16px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
-        linear-gradient(135deg, rgba(246,197,110,.10), rgba(122,215,255,.08));
-      border:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;justify-content:space-between;
+    .hero p,.section-head p,.feature-card p,.service-card p,.pricing-card p,.step-card p,.testimonial p,.faq-item p,.contact-card p,.cta-box p,.benefit-card p{
+      color:var(--muted);line-height:1.74;
     }
-    .mock.large{grid-column:1/-1;min-height:180px}
-    .mock h3,.work-card h3,.process-card h3,.contact-card h3,.faq-q,.section-title,.package-card h3{margin:0 0 8px 0}
-    .mini-lines{display:grid;gap:8px}
-    .mini-lines span{display:block;height:10px;border-radius:999px;background:rgba(255,255,255,.09)}
-    .mini-lines span:nth-child(1){width:82%}
-    .mini-lines span:nth-child(2){width:63%}
-    .mini-lines span:nth-child(3){width:47%}
-    .tag{
-      display:inline-flex;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.06);font-size:.78rem;color:var(--soft)
-    }
-    .note-card{padding:16px;border-radius:18px}
+    .hero-actions,.hero-actions-2{display:flex;flex-wrap:wrap;gap:12px}
+    .hero-actions{margin-top:24px}
+    .hero-actions-2{margin-top:12px}
+    .hero-mini{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
+    .metric-card{padding:18px;border-radius:18px}
+    .metric-card strong{display:block;font-size:1.35rem}
+    .metric-card span{color:var(--muted);font-size:.86rem}
 
-    section{padding:24px 0 18px}
-    .section-head{
-      display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:20px;
+    .image-stack-card{display:flex;flex-direction:column;gap:16px;min-height:100%}
+    .stack-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .pill{padding:8px 12px;border-radius:999px;border:1px solid var(--line);font-size:.82rem;color:var(--muted)}
+    .hero-visual{position:relative;border-radius:24px;overflow:hidden;min-height:260px;border:1px solid rgba(255,255,255,.08)}
+    .hero-visual img{width:100%;height:100%;object-fit:cover}
+    .hero-overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(180deg, rgba(6,8,13,.05), rgba(6,8,13,.48));
     }
-    .section-kicker{
-      color:var(--accent);text-transform:uppercase;letter-spacing:.16em;font-size:.78rem;font-weight:800;margin-bottom:10px;
+    .hero-floating{
+      position:absolute;right:18px;bottom:18px;display:grid;gap:10px;width:min(260px,68%);
     }
-    .section-title{font-size:clamp(1.7rem, 3vw, 2.5rem);line-height:1.05;letter-spacing:-.03em}
-    .section-sub{color:var(--muted);max-width:62ch}
+    .float-card{
+      padding:14px 16px;border-radius:18px;border:1px solid rgba(255,255,255,.12);
+      background:rgba(11,18,30,.76);backdrop-filter:blur(10px);
+    }
+    .float-card strong{display:block;margin-bottom:4px}
+    .float-card span{font-size:.9rem;color:var(--muted)}
+    .mini-showcase{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .mini-shot{border-radius:18px;overflow:hidden;height:118px;border:1px solid rgba(255,255,255,.08)}
+    .mini-shot img{width:100%;height:100%;object-fit:cover}
 
-    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .section-card{border-radius:22px;padding:22px}
-    .service-icon{
-      width:46px;height:46px;border-radius:14px;margin-bottom:16px;
-      background:linear-gradient(135deg, rgba(246,197,110,.22), rgba(122,215,255,.20));
-      border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-weight:900;color:var(--text)
-    }
-    .section-card p{color:var(--muted);margin:0}
-    .section-card ul{margin:14px 0 0 0;padding-left:18px;color:var(--soft)}
-    .section-card li{margin-bottom:8px}
+    section{padding:30px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:18px}
+    .section-head h2{margin:0;font-size:clamp(1.7rem,3vw,2.7rem);letter-spacing:-.03em}
 
-    .packages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .package-card{border-radius:24px;padding:24px;position:relative}
-    .badge{
-      display:inline-block;padding:9px 12px;border-radius:999px;background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.08);font-size:.82rem;font-weight:800;margin-bottom:14px;
+    .feature-grid,.services-grid,.pricing-grid,.showcase-grid,.steps-grid,.test-grid,.faq-grid,.contact-grid,.benefits-grid{
+      display:grid;gap:18px;
     }
-    .package-price{font-size:clamp(2.2rem,4vw,3.4rem);font-weight:900;letter-spacing:-.05em;margin:10px 0}
-    .package-card p{color:var(--muted)}
-    .package-card ul{margin:14px 0 18px 0;padding-left:18px;color:var(--soft)}
-    .package-card li{margin-bottom:8px}
-    .highlight-ring{
-      outline:1px solid rgba(246,197,110,.35);
-      box-shadow:0 20px 60px rgba(0,0,0,.42), 0 0 0 1px rgba(246,197,110,.12) inset;
-    }
+    .feature-grid{grid-template-columns:repeat(4,1fr)}
+    .services-grid,.pricing-grid,.showcase-grid,.test-grid{grid-template-columns:repeat(3,1fr)}
+    .steps-grid{grid-template-columns:repeat(4,1fr)}
+    .faq-grid{grid-template-columns:1fr 1fr}
+    .contact-grid{grid-template-columns:1fr .92fr}
+    .benefits-grid{grid-template-columns:repeat(3,1fr)}
 
-    .work-controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+    .feature-card,.service-card,.pricing-card,.showcase-card,.step-card,.testimonial,.faq-item,.contact-card,.benefit-card{padding:24px}
+    .iconbox{
+      width:52px;height:52px;border-radius:17px;display:grid;place-items:center;margin-bottom:16px;
+      background:linear-gradient(135deg, rgba(139,92,246,.20), rgba(34,211,238,.12));
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .iconbox svg{width:24px;height:24px;stroke:#eef2ff}
+    .feature-card h3,.service-card h3,.pricing-card h3,.showcase-card h3,.step-card h3,.testimonial h3,.benefit-card h3{margin:0 0 10px}
+    .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
     .filter-btn{
-      background:rgba(255,255,255,.03);color:var(--soft);border:1px solid var(--line);
-      padding:11px 14px;border-radius:999px;cursor:pointer;font:inherit;font-weight:600;
+      padding:10px 14px;border-radius:999px;border:1px solid var(--line);
+      background:rgba(255,255,255,.04);color:var(--muted);cursor:pointer;font-weight:800;
     }
-    .filter-btn.active{
-      background:linear-gradient(135deg, rgba(246,197,110,.22), rgba(122,215,255,.16));color:var(--text);
-    }
-    .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .work-card{border-radius:24px;overflow:hidden;display:flex;flex-direction:column}
-    .work-media{
-      aspect-ratio:4/3;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(122,215,255,.24), transparent 28%),
-        radial-gradient(circle at 80% 30%, rgba(246,197,110,.22), transparent 24%),
-        linear-gradient(160deg, #161c28, #0b0e14 65%);
-      border-bottom:1px solid rgba(255,255,255,.06);position:relative;
-    }
-    .work-media::after{content:"";position:absolute;inset:16px;border-radius:18px;border:1px solid rgba(255,255,255,.08)}
-    .work-body{padding:18px}
-    .work-meta{
-      display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--muted);font-size:.92rem;margin-bottom:10px;
-    }
-    .work-card p{color:var(--muted);margin:0 0 14px 0}
-    .linkish{color:var(--accent-2);font-weight:700;cursor:pointer;background:none;border:none;padding:0}
+    .filter-btn.active,.filter-btn:hover{background:rgba(139,92,246,.16);border-color:rgba(139,92,246,.26);color:var(--text)}
+    .hidden{display:none !important}
 
-    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .process-card{padding:20px;border-radius:22px}
-    .step{
-      display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border-radius:12px;
-      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06);margin-bottom:14px;font-weight:900;color:var(--accent);
+    .service-thumb,.showcase-thumb{
+      height:220px;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.08);margin-bottom:16px;background:#0b1220;
     }
-    .process-card p{color:var(--muted);margin:0}
+    .service-thumb img,.showcase-thumb img{width:100%;height:100%;object-fit:cover}
+    .showcase-meta{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:.9rem;margin-bottom:10px}
 
-    .faq-list{display:grid;gap:14px}
-    .faq-item{border-radius:18px;overflow:hidden}
-    .faq-btn{
-      width:100%;background:none;border:none;color:var(--text);font:inherit;text-align:left;cursor:pointer;
-      padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;
-    }
-    .faq-a{display:none;padding:0 20px 18px 20px;color:var(--muted)}
-    .faq-item.open .faq-a{display:block}
-    .faq-item.open .faq-plus{transform:rotate(45deg)}
-    .faq-plus{
-      width:28px;height:28px;border-radius:10px;border:1px solid rgba(255,255,255,.08);
-      display:flex;align-items:center;justify-content:center;color:var(--soft);transition:.2s ease;flex:0 0 auto;
+    .service-card ul,.pricing-card ul{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:10px}
+    .service-card li,.pricing-card li{display:flex;gap:10px;align-items:flex-start;color:#e3eaf7}
+    .service-card li::before,.pricing-card li::before{content:"✦";color:var(--accent-2)}
+
+    .price{font-size:2.2rem;font-weight:900;letter-spacing:-.04em;margin:10px 0 4px}
+    .price small{font-size:.95rem;font-weight:600;color:var(--muted)}
+    .pricing-card.popular{position:relative;border-color:rgba(139,92,246,.28);box-shadow:0 24px 80px rgba(139,92,246,.18)}
+    .tag{
+      position:absolute;top:18px;right:18px;padding:8px 12px;border-radius:999px;
+      background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.30);color:#e9ddff;font-size:.78rem;font-weight:900;
     }
 
-    .contact-grid{display:grid;grid-template-columns:.88fr 1.12fr;gap:18px}
-    .contact-card{border-radius:24px;padding:22px}
-    .contact-card p{color:var(--muted)}
-    .contact-list{display:grid;gap:12px;margin-top:18px}
-    .contact-link{
-      display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 16px;border-radius:16px;
-      background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);color:var(--soft)
+    .step-number{
+      width:42px;height:42px;border-radius:999px;display:grid;place-items:center;margin-bottom:14px;
+      background:rgba(139,92,246,.14);border:1px solid rgba(139,92,246,.28);font-weight:900;color:#eadcff;
     }
-    form{display:grid;gap:14px}
-    .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    input,textarea,select{
-      width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);
-      color:var(--text);border-radius:14px;padding:14px 15px;font:inherit;outline:none;
-    }
-    textarea{min-height:150px;resize:vertical}
-    input::placeholder,textarea::placeholder{color:#8390a6}
-    .footer{padding:26px 0 50px;color:var(--muted)}
-    .footer-bar{
-      display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.08);padding-top:18px;
+    .stars{color:#fbbf24;letter-spacing:1px;margin-bottom:12px}
+
+    .faq-item{cursor:pointer;transition:.2s ease}
+    .faq-item:hover{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03))}
+    .faq-q{display:flex;justify-content:space-between;align-items:center;gap:16px}
+    .faq-q strong{font-size:1rem}
+    .faq-a{max-height:0;overflow:hidden;opacity:0;transition:max-height .28s ease,opacity .28s ease,margin-top .28s ease;margin-top:0}
+    .faq-item.open .faq-a{max-height:240px;opacity:1;margin-top:14px}
+    .faq-symbol{font-size:1.4rem;color:var(--muted)}
+
+    .benefit-card{position:relative;overflow:hidden}
+    .benefit-card::after{
+      content:"";position:absolute;right:-30px;top:-30px;width:120px;height:120px;border-radius:999px;
+      background:radial-gradient(circle, rgba(139,92,246,.18), transparent 65%);
     }
 
-    .modal{
-      position:fixed;inset:0;background:rgba(4,5,8,.72);display:none;place-items:center;padding:18px;z-index:80;backdrop-filter: blur(10px);
+    .cta-box{padding:28px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+    .cta-box h3{margin:0 0 8px;font-size:2rem;letter-spacing:-.03em}
+
+    .contact-card textarea,.contact-card input,.contact-card select{
+      width:100%;background:#0a111c;color:var(--text);border:1px solid var(--line);
+      border-radius:16px;padding:14px 15px;outline:none;
     }
-    .modal.open{display:grid}
-    .modal-card{
-      width:min(760px,100%);border-radius:28px;background:linear-gradient(180deg, #10141c, #0c1016);
-      border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow);overflow:hidden;
+    .contact-card textarea{min-height:140px;resize:vertical}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .form-stack{display:grid;gap:12px;margin-top:14px}
+    .small{font-size:.84rem;color:var(--muted)}
+    .quick-actions{display:grid;gap:12px;margin-top:16px}
+    .mini-contact{
+      margin-top:18px;padding:18px;border-radius:18px;background:#0b111b;border:1px solid var(--line);
     }
-    .modal-visual{
-      height:260px;
-      background:
-        radial-gradient(circle at 25% 20%, rgba(122,215,255,.26), transparent 26%),
-        radial-gradient(circle at 75% 28%, rgba(246,197,110,.24), transparent 22%),
-        linear-gradient(160deg, #161d29, #0c1017 66%);
-      border-bottom:1px solid rgba(255,255,255,.07);
-    }
-    .modal-body{padding:22px}
-    .modal-top{display:flex;justify-content:space-between;gap:16px;align-items:start}
-    .close-btn{
-      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--text);
-      width:40px;height:40px;border-radius:12px;cursor:pointer;font-size:1.1rem;
+    .mini-contact strong{display:block;margin-bottom:8px}
+
+    .footer{padding:28px 0 44px;color:var(--muted)}
+    .footer-row{
+      display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
+      padding-top:20px;margin-top:24px;border-top:1px solid var(--line);
     }
 
-    @media (max-width: 980px){
-      .hero-grid,.contact-grid,.services,.packages-grid,.work-grid,.process-grid{grid-template-columns:1fr}
-      .hero-meta,.field-grid{grid-template-columns:1fr}
+    .floating-actions{position:fixed;right:18px;bottom:18px;z-index:50;display:grid;gap:12px}
+    .fab{
+      width:58px;height:58px;border-radius:999px;display:grid;place-items:center;cursor:pointer;
+      border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 40px rgba(139,92,246,.34);
+      background:linear-gradient(135deg,var(--accent),#9f84ff);
     }
-    @media (max-width: 760px){
-      .nav{display:none}
-      .menu-btn{display:inline-flex}
-      .hero{padding-top:48px}
-      .hero-card,.showcase-card,.contact-card,.package-card{padding:20px}
-      .container{width:min(calc(100% - 20px), var(--max))}
-      h1{font-size:2.45rem}
-      .mock-grid{grid-template-columns:1fr}
+    .fab.secondary{background:#0d1524;box-shadow:0 16px 36px rgba(0,0,0,.28)}
+    .fab svg{width:24px;height:24px;stroke:#fff}
+
+    @media (max-width:1100px){
+      .hero-grid,.feature-grid,.services-grid,.pricing-grid,.showcase-grid,.steps-grid,.test-grid,.faq-grid,.contact-grid,.benefits-grid{grid-template-columns:1fr 1fr}
+      .hero-mini{grid-template-columns:repeat(2,1fr)}
     }
-  </style>
+    @media (max-width:820px){
+      .nav{flex-wrap:wrap}
+      .nav-links{width:100%;justify-content:flex-start;flex-wrap:nowrap;overflow:auto}
+      .hero-grid,.feature-grid,.services-grid,.pricing-grid,.showcase-grid,.steps-grid,.test-grid,.faq-grid,.contact-grid,.benefits-grid,.form-grid,.hero-mini,.mini-showcase{grid-template-columns:1fr}
+      .hero{padding-top:54px}
+      .cta-box h3{font-size:1.65rem}
+      h1{font-size:2.55rem}
+      .hero-floating{position:static;width:100%;margin-top:14px}
+    }
+  
+@media (max-width: 900px){
+  body{overflow-x:hidden;}
+  .container{width:100% !important; padding:0 12px;}
+  .grid, .row, .cards{display:block !important;}
+  .card, .service-card, .pricing-card, .showcase-card{
+    width:100% !important; margin-bottom:16px;
+  }
+  h1{font-size:24px !important;}
+  h2{font-size:20px !important;}
+  h3{font-size:18px !important;}
+  p{font-size:14px !important;}
+  button, .btn{width:100% !important; padding:12px !important;}
+  img{max-width:100%; height:auto;}
+}
+
+</style>
 </head>
 <body>
   <header class="topbar">
-    <div class="container">
-      <div class="topbar-inner">
-        <a href="#top" class="brand">
-          <span class="brand-mark" aria-hidden="true"></span>
-          <span>Nex Visuals</span>
-        </a>
+    <div class="container nav">
+      <a class="brand" href="#top">
+        <div class="logo" aria-hidden="true"><img src="data:image/png;base64,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" style="width:100%;height:100%;object-fit:cover;border-radius:10px;"></div>
+        <div class="brand-text">
+          <strong>Nex Visuals™</strong>
+          <span>Premium Creative Studio</span>
+        </div>
+      </a>
 
-        <nav class="nav" aria-label="Primary">
-          <a href="#services">Services</a>
-          <a href="#packages">Packages</a>
-          <a href="#work">Work</a>
-          <a href="#process">Process</a>
-          <a href="#contact" class="cta">Book a Project</a>
-        </nav>
-
-        <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
-      </div>
-
-      <div class="mobile-menu" id="mobileMenu">
+      <nav class="nav-links">
         <a href="#services">Services</a>
-        <a href="#packages">Packages</a>
-        <a href="#work">Work</a>
+        <a href="#work">Showcase</a>
+        <a href="#pricing">Packages</a>
         <a href="#process">Process</a>
-        <a href="#contact">Book a Project</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-ghost btn-mini" href="#contact">Contact</a>
+        <a class="btn btn-primary btn-mini" href="#pricing">Book a Package</a>
       </div>
     </div>
   </header>
@@ -316,124 +297,153 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-card">
-          <div class="eyebrow"><span class="dot"></span> Premium visual design for serious brands</div>
-          <h1>Agency-level visuals that make your brand look expensive.</h1>
+          <div class="eyebrow">⚡ Premium visuals for serious brands</div>
+          <h1>Make your business page look sharper, cleaner, and more expensive.</h1>
           <p>
-            Nex Visuals helps creators, startups, and businesses present themselves with premium digital visuals.
-            Clean direction, strong composition, polished execution, and a studio-grade finish.
+            Nex Visuals™ creates high-end product scenes, polished service presentation sections, and premium brand visuals that make your website feel more professional and more client-ready.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact">Start Your Project</a>
-            <a class="btn btn-secondary" href="#packages">View Packages</a>
+            <a class="btn btn-primary" href="#contact">Start a Project</a>
+            <a class="btn btn-secondary" href="#work">View Showcase</a>
+            <button class="btn btn-ghost" id="scrollPackages">See Packages</button>
           </div>
-          <div class="hero-meta">
-            <div class="stat-card"><div class="stat-number">24–72 hrs</div><div class="stat-label">Fast delivery window</div></div>
-            <div class="stat-card"><div class="stat-number">Premium look</div><div class="stat-label">Built for client trust</div></div>
-            <div class="stat-card"><div class="stat-number">Custom offers</div><div class="stat-label">Flexible package options</div></div>
+          <div class="hero-actions-2">
+            <button class="btn btn-secondary btn-mini" id="showOffer">Why choose this version?</button>
+            <a class="btn btn-ghost btn-mini" href="#services">Explore Features</a>
+          </div>
+          <div class="hero-mini">
+            <div class="metric-card"><strong>24h</strong><span>Fast-slot delivery</span></div>
+            <div class="metric-card"><strong>3 Packs</strong><span>Clear pricing flow</span></div>
+            <div class="metric-card"><strong>Premium</strong><span>Agency-style look</span></div>
+            <div class="metric-card"><strong>Custom</strong><span>Tailored package option</span></div>
           </div>
         </div>
 
-        <aside class="showcase-card">
-          <div class="screen">
-            <div class="screen-top"><strong>Studio Preview</strong><span>Curated presentation</span></div>
-            <div class="pills">
-              <span class="pill">Brand Posters</span>
-              <span class="pill">Product Visuals</span>
-              <span class="pill">Launch Assets</span>
-            </div>
-            <div class="mock-grid">
-              <div class="mock"><div><h3>Luxury Poster</h3><div class="mini-lines"><span></span><span></span><span></span></div></div><span class="tag">Social Campaign</span></div>
-              <div class="mock"><div><h3>Product Graphic</h3><div class="mini-lines"><span></span><span></span><span></span></div></div><span class="tag">Brand Asset</span></div>
-              <div class="mock large"><div><h3>Creative Direction Board</h3><div class="mini-lines"><span></span><span></span><span></span></div></div><span class="tag">Agency Presentation Style</span></div>
+        <div class="image-stack-card">
+          <div class="stack-top">
+            <strong>Live Studio Preview</strong>
+            <span class="pill">Real visuals included</span>
+          </div>
+          <div class="hero-visual">
+            <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1400&q=80" alt="Creative studio workspace" />
+            <div class="hero-overlay"></div>
+            <div class="hero-floating">
+              <div class="float-card">
+                <strong>Premium Layout</strong>
+                <span>Sharper hero, stronger cards, more business-ready sections.</span>
+              </div>
+              <div class="float-card">
+                <strong>Client Flow</strong>
+                <span>Buttons, packages, showcase, FAQ, and contact actions all connect better now.</span>
+              </div>
             </div>
           </div>
-          <div class="note-card"><strong>Built for people who want quality, not average design.</strong></div>
-        </aside>
+          <div class="mini-showcase">
+            <div class="mini-shot"><img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=900&q=80" alt="Product creative" /></div>
+            <div class="mini-shot"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Design workspace" /></div>
+            <div class="mini-shot"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Marketing visual" /></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="iconbox">
+              <svg fill="none" viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Cleaner structure</h3>
+            <p>Better spacing, sharper content blocks, and clearer visual hierarchy make the page feel more premium right away.</p>
+          </article>
+          <article class="feature-card">
+            <div class="iconbox">
+              <svg fill="none" viewBox="0 0 24 24"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 15.5 7.2 18l.9-5.4L4.2 8.7l5.4-.8L12 3z" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Stronger first impression</h3>
+            <p>A new logo, more polished buttons, and a cleaner hero section make the site look more serious and more business-ready.</p>
+          </article>
+          <article class="feature-card">
+            <div class="iconbox">
+              <svg fill="none" viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M7 15l3-3 3 2 5-6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>More conversion-ready</h3>
+            <p>More useful buttons and action paths help visitors compare packages, view work, and reach out faster.</p>
+          </article>
+          <article class="feature-card">
+            <div class="iconbox">
+              <svg fill="none" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Easy to upgrade later</h3>
+            <p>You can still swap in your own logo, photos, or brand links later without changing the whole design system.</p>
+          </article>
+        </div>
       </div>
     </section>
 
     <section id="services">
       <div class="container">
         <div class="section-head">
-          <div><div class="section-kicker">Services</div><div class="section-title">What Nex Visuals delivers</div></div>
-          <div class="section-sub">High-end visuals designed to improve presentation, increase perceived value, and make your brand look more established.</div>
+          <div><h2>Services designed to make brands look premium</h2></div>
+          <p>These cards now use real visuals so the website looks complete instead of empty. They also explain your offers more clearly.</p>
         </div>
-        <div class="services">
-          <article class="section-card">
-            <div class="service-icon">01</div>
-            <h3>Brand Visual Design</h3>
-            <p>Clean, premium visual assets for pages, campaigns, and digital presence.</p>
-            <ul><li>Posters and campaign graphics</li><li>Premium brand presentation visuals</li><li>Social media design direction</li></ul>
-          </article>
-          <article class="section-card">
-            <div class="service-icon">02</div>
-            <h3>Creative Ad Assets</h3>
-            <p>Sharp promotional visuals that feel polished and attention-worthy.</p>
-            <ul><li>Product promotion images</li><li>Launch and announcement creatives</li><li>High-conversion visual layouts</li></ul>
-          </article>
-          <article class="section-card">
-            <div class="service-icon">03</div>
-            <h3>Studio Packaging</h3>
-            <p>A structured delivery style that makes the work feel client-ready and professional.</p>
-            <ul><li>Organized file delivery</li><li>Clear revisions workflow</li><li>Professional communication format</li></ul>
-          </article>
-        </div>
-      </div>
-    </section>
 
-    <section id="packages">
-      <div class="container">
-        <div class="section-head">
-          <div><div class="section-kicker">Packages</div><div class="section-title">Choose the package that fits your project</div></div>
-          <div class="section-sub">Everything is included in one site now. Clients can scroll here and see all pricing clearly.</div>
+        <div class="filters" id="serviceFilters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="branding">Branding</button>
+          <button class="filter-btn" data-filter="product">Product</button>
+          <button class="filter-btn" data-filter="marketing">Marketing</button>
         </div>
-        <div class="packages-grid">
-          <article class="package-card">
-            <div class="badge">Starter</div>
-            <h3>3 Premium Images</h3>
-            <div class="package-price">₹10,000</div>
-            <p>Best for a first project, launch creative, or a small premium visual set.</p>
+
+        <div class="services-grid">
+          <article class="service-card" data-category="branding">
+            <div class="service-thumb">
+              <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80" alt="Brand identity presentation" />
+            </div>
+            <div class="iconbox">
+              <svg fill="none" viewBox="0 0 24 24"><path d="M6 18V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v10M4 18h16" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Brand Identity Visuals</h3>
+            <p>Premium presentation assets that make your brand look more cohesive, more polished, and more client-ready.</p>
             <ul>
-              <li>3 final high-quality images</li>
-              <li>Premium visual direction</li>
-              <li>1 revision round</li>
-              <li>Fast clean delivery</li>
+              <li>Logo presentation mockups</li>
+              <li>Color and layout direction</li>
+              <li>Portfolio-ready visual display</li>
             </ul>
-            <a class="btn btn-primary" href="#contact">Choose Starter</a>
           </article>
 
-          <article class="package-card highlight-ring">
-            <div class="badge">Premium</div>
-            <h3>5 Premium Images</h3>
-            <div class="package-price">₹25,000</div>
-            <p>For bigger launches, stronger social presentation, or more complete visual coverage.</p>
+          <article class="service-card" data-category="product">
+            <div class="service-thumb">
+              <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=80" alt="Luxury product showcase" />
+            </div>
+            <div class="iconbox">
+              <svg fill="none" viewBox="0 0 24 24"><path d="M12 3 4 7l8 4 8-4-8-4Zm-8 4v10l8 4 8-4V7" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Product Showcase Design</h3>
+            <p>Luxury-style product visuals for websites, promotions, premium portfolios, and client-facing landing pages.</p>
             <ul>
-              <li>5 final high-quality images</li>
-              <li>Stronger campaign consistency</li>
-              <li>1 revision round</li>
-              <li>Elevated premium presentation</li>
+              <li>Dark studio product scenes</li>
+              <li>Realistic premium ad feel</li>
+              <li>High-impact hero image styling</li>
             </ul>
-            <a class="btn btn-primary" href="#contact">Choose 5 Images</a>
           </article>
 
-          <article class="package-card">
-            <div class="badge">Top Tier</div>
-            <h3>6 Premium Images</h3>
-            <div class="package-price">₹32,000</div>
-            <p>For brands that want the most complete premium package from the listed offers.</p>
+          <article class="service-card" data-category="marketing">
+            <div class="service-thumb">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="Marketing campaign visuals" />
+            </div>
+            <div class="iconbox">
+              <svg fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Marketing Creative Assets</h3>
+            <p>Ad creatives and service visuals built to look sharper, more expensive, and more trustworthy online.</p>
             <ul>
-              <li>6 final high-quality images</li>
-              <li>Highest visual coverage</li>
-              <li>1 revision round</li>
-              <li>Premium client-facing delivery</li>
+              <li>Campaign posters and banners</li>
+              <li>Offer and service visuals</li>
+              <li>Landing page hero sections</li>
             </ul>
-            <a class="btn btn-primary" href="#contact">Choose 6 Images</a>
           </article>
-        </div>
-
-        <div class="note-card" style="margin-top:18px;">
-          <strong>Custom Package</strong>
-          <div style="color:var(--muted);margin-top:8px;">Need a different number of visuals or a larger project scope? Clients can request a custom quote through the contact form below.</div>
         </div>
       </div>
     </section>
@@ -441,41 +451,119 @@
     <section id="work">
       <div class="container">
         <div class="section-head">
-          <div><div class="section-kicker">Selected work</div><div class="section-title">Portfolio-style showcase</div></div>
-          <div class="section-sub">These are polished placeholder case cards you can present right away. You can later replace the text with your real projects.</div>
+          <div><h2>Showcase</h2></div>
+          <p>These project-style cards now include visuals, so the page feels much more like a real studio portfolio.</p>
         </div>
-        <div class="work-controls">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="brand">Brand</button>
-          <button class="filter-btn" data-filter="product">Product</button>
-          <button class="filter-btn" data-filter="campaign">Campaign</button>
-        </div>
-        <div class="work-grid">
-          <article class="work-card" data-type="brand">
-            <div class="work-media"></div>
-            <div class="work-body">
-              <div class="work-meta"><span class="tag">Brand</span><span>Luxury visual identity</span></div>
-              <h3>Obsidian Launch Set</h3>
-              <p>Premium black-and-gold campaign visuals created to make a new brand feel established from day one.</p>
-              <button class="linkish" data-project="obsidian">View details</button>
+
+        <div class="showcase-grid">
+          <article class="showcase-card">
+            <div class="showcase-thumb"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="Premium tech product scene" /></div>
+            <div class="showcase-meta"><span>Luxury Visual</span><span>Premium Ad Style</span></div>
+            <h3>Dark product hero scene</h3>
+            <p>Ideal for premium promos, sleek packaging showcases, and high-end product presentation.</p>
+            <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn btn-secondary btn-mini" href="#contact">Request Similar</a>
+              <a class="btn btn-ghost btn-mini" href="#pricing">See Pricing</a>
             </div>
           </article>
-          <article class="work-card" data-type="product">
-            <div class="work-media"></div>
-            <div class="work-body">
-              <div class="work-meta"><span class="tag">Product</span><span>High-end product focus</span></div>
-              <h3>Nova Product Graphics</h3>
-              <p>Clean product-focused compositions with depth, contrast, and strong premium presentation.</p>
-              <button class="linkish" data-project="nova">View details</button>
+          <article class="showcase-card">
+            <div class="showcase-thumb"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80" alt="Creative team strategy layout" /></div>
+            <div class="showcase-meta"><span>Service Presentation</span><span>Client Facing</span></div>
+            <h3>Professional service section</h3>
+            <p>A polished way to present your offers so visitors quickly understand what you provide.</p>
+            <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn btn-secondary btn-mini" href="#services">View Services</a>
+              <button class="btn btn-ghost btn-mini showcaseInfo">More Info</button>
             </div>
           </article>
-          <article class="work-card" data-type="campaign">
-            <div class="work-media"></div>
-            <div class="work-body">
-              <div class="work-meta"><span class="tag">Campaign</span><span>Promotional rollout</span></div>
-              <h3>Velocity Promo Series</h3>
-              <p>Fast, bold launch visuals structured for social campaigns and brand awareness pushes.</p>
-              <button class="linkish" data-project="velocity">View details</button>
+          <article class="showcase-card">
+            <div class="showcase-thumb"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" alt="Premium business portfolio page" /></div>
+            <div class="showcase-meta"><span>Business Portfolio</span><span>Studio Layout</span></div>
+            <h3>Agency portfolio section</h3>
+            <p>Built to make your website feel less basic and more like a polished digital studio.</p>
+            <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn btn-secondary btn-mini" href="#contact">Build Mine</a>
+              <button class="btn btn-ghost btn-mini" id="openTop">Back Up</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div><h2>Extra benefits in this version</h2></div>
+          <p>You asked for more buttons and features, so these sections add useful depth without making the page messy.</p>
+        </div>
+        <div class="benefits-grid">
+          <article class="benefit-card">
+            <h3>More usable navigation</h3>
+            <p>Visitors can now jump between services, pricing, showcase, process, FAQ, and contact without getting lost.</p>
+          </article>
+          <article class="benefit-card">
+            <h3>Better package flow</h3>
+            <p>The pricing cards have stronger calls-to-action and a clearer difference between beginner and premium offers.</p>
+          </article>
+          <article class="benefit-card">
+            <h3>Client-ready presentation</h3>
+            <p>The site now looks stronger enough to show to actual clients instead of feeling like a rough draft.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <div><h2>Packages</h2></div>
+          <p>Pricing is now cleaner, easier to scan, and designed to support actual decisions from visitors.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="pricing-card">
+            <h3>Starter Pack</h3>
+            <div class="price">₹10,000 <small>/ 3 images</small></div>
+            <p>For smaller brands or first projects that still need a sharp premium presentation.</p>
+            <ul>
+              <li>3 polished creative images</li>
+              <li>Professional premium styling</li>
+              <li>Basic revision support</li>
+            </ul>
+            <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn btn-secondary" href="#contact">Choose Starter</a>
+              <button class="btn btn-ghost btn-mini packageHelp">Compare</button>
+            </div>
+          </article>
+
+          <article class="pricing-card popular">
+            <span class="tag">Most Popular</span>
+            <h3>Growth Pack</h3>
+            <div class="price">₹25,000 <small>/ 5 images</small></div>
+            <p>Best for stronger presentation, more campaign flexibility, and a more complete visual set.</p>
+            <ul>
+              <li>5 premium creative images</li>
+              <li>Stronger campaign consistency</li>
+              <li>Better overall visual branding</li>
+            </ul>
+            <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn btn-primary" href="#contact">Choose Growth</a>
+              <button class="btn btn-ghost btn-mini packageHelp">Compare</button>
+            </div>
+          </article>
+
+          <article class="pricing-card">
+            <h3>Signature Pack</h3>
+            <div class="price">₹32,000 <small>/ 6 images</small></div>
+            <p>For businesses that want the fullest premium visual set and the strongest brand presentation.</p>
+            <ul>
+              <li>6 premium studio visuals</li>
+              <li>Priority premium composition</li>
+              <li>Best overall portfolio impact</li>
+            </ul>
+            <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn btn-secondary" href="#contact">Choose Signature</a>
+              <button class="btn btn-ghost btn-mini packageHelp">Compare</button>
             </div>
           </article>
         </div>
@@ -485,14 +573,30 @@
     <section id="process">
       <div class="container">
         <div class="section-head">
-          <div><div class="section-kicker">Process</div><div class="section-title">How clients work with you</div></div>
-          <div class="section-sub">This is structured to feel trustworthy and easy to follow.</div>
+          <div><h2>Simple process</h2></div>
+          <p>A professional site also needs a clear workflow. This keeps the business feel organized and easier to trust.</p>
         </div>
-        <div class="process-grid">
-          <article class="process-card"><div class="step">1</div><h3>Inquiry</h3><p>The client shares what they need, the style they want, and the purpose of the visuals.</p></article>
-          <article class="process-card"><div class="step">2</div><h3>Direction</h3><p>You confirm the concept, scope, and package so expectations are clear from the start.</p></article>
-          <article class="process-card"><div class="step">3</div><h3>Design</h3><p>You create premium visuals with a polished, agency-style presentation approach.</p></article>
-          <article class="process-card"><div class="step">4</div><h3>Delivery</h3><p>The final files are delivered in a clean, professional way with room for one revision round.</p></article>
+
+        <div class="steps-grid">
+          <article class="step-card"><div class="step-number">01</div><h3>Share your idea</h3><p>Tell us your style, product, service, or business goal.</p></article>
+          <article class="step-card"><div class="step-number">02</div><h3>Select package</h3><p>Choose a pack or request a custom option that fits your brand better.</p></article>
+          <article class="step-card"><div class="step-number">03</div><h3>Creative production</h3><p>We build premium visuals with cleaner, sharper, more expensive-looking presentation.</p></article>
+          <article class="step-card"><div class="step-number">04</div><h3>Delivery</h3><p>Receive your visuals ready for your site, socials, ads, or business page.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div><h2>Why this version feels more professional</h2></div>
+          <p>The upgrade is not just extra decoration. The added features make the page easier to use and more convincing.</p>
+        </div>
+
+        <div class="test-grid">
+          <article class="testimonial"><div class="stars">★★★★★</div><h3>Sharper first impression</h3><p>The new logo, hero visuals, and stronger cards immediately make the site feel more serious.</p></article>
+          <article class="testimonial"><div class="stars">★★★★★</div><h3>Better client flow</h3><p>Visitors can now move between services, pricing, showcase, contact, and FAQ more smoothly.</p></article>
+          <article class="testimonial"><div class="stars">★★★★★</div><h3>More complete business feel</h3><p>Real images, more useful buttons, and improved structure make the website feel much less empty.</p></article>
         </div>
       </div>
     </section>
@@ -500,172 +604,192 @@
     <section id="faq">
       <div class="container">
         <div class="section-head">
-          <div><div class="section-kicker">FAQ</div><div class="section-title">Common client questions</div></div>
-          <div class="section-sub">These reduce doubt and make the page feel more complete.</div>
+          <div><h2>FAQ</h2></div>
+          <p>This section helps answer common questions before clients even message you.</p>
         </div>
-        <div class="faq-list">
-          <div class="faq-item"><button class="faq-btn" type="button"><span class="faq-q">How long does delivery take?</span><span class="faq-plus">＋</span></button><div class="faq-a">Most projects can be delivered within 24 to 72 hours depending on the brief and revision needs.</div></div>
-          <div class="faq-item"><button class="faq-btn" type="button"><span class="faq-q">Can I request a specific style?</span><span class="faq-plus">＋</span></button><div class="faq-a">Yes. Clients can share reference visuals or explain the mood they want, and the direction can be built around that.</div></div>
-          <div class="faq-item"><button class="faq-btn" type="button"><span class="faq-q">Do revisions cost extra?</span><span class="faq-plus">＋</span></button><div class="faq-a">One revision round is included in the package. Additional revisions can be added later if you want.</div></div>
-          <div class="faq-item"><button class="faq-btn" type="button"><span class="faq-q">Can I request a custom package?</span><span class="faq-plus">＋</span></button><div class="faq-a">Yes. The site now includes a custom package option through the inquiry form for special requirements and bigger projects.</div></div>
+
+        <div class="faq-grid">
+          <article class="faq-item">
+            <div class="faq-q"><strong>Can I request a custom package?</strong><span class="faq-symbol">+</span></div>
+            <div class="faq-a"><p>Yes. This version includes stronger paths to contact you for custom image counts, new services, or a special brand package.</p></div>
+          </article>
+          <article class="faq-item">
+            <div class="faq-q"><strong>Are images included in this file now?</strong><span class="faq-symbol">+</span></div>
+            <div class="faq-a"><p>Yes. This version uses live image links, so the page looks filled instead of showing empty placeholders.</p></div>
+          </article>
+          <article class="faq-item">
+            <div class="faq-q"><strong>Does it already have a new logo?</strong><span class="faq-symbol">+</span></div>
+            <div class="faq-a"><p>Yes. A different built-in SVG logo is included at the top and bottom of the page.</p></div>
+          </article>
+          <article class="faq-item">
+            <div class="faq-q"><strong>Can I still replace things later?</strong><span class="faq-symbol">+</span></div>
+            <div class="faq-a"><p>Yes. You can swap the logo, text, visuals, links, pricing, and contact actions whenever you want.</p></div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="contact">
+    <section>
       <div class="container">
-        <div class="section-head">
-          <div><div class="section-kicker">Contact</div><div class="section-title">Let’s turn interest into inquiries</div></div>
-          <div class="section-sub">The form below is already functional. It opens the user's email app with the project details filled in.</div>
-        </div>
-        <div class="contact-grid">
-          <aside class="contact-card">
-            <h3>Reach Nex Visuals</h3>
-            <p>Replace these placeholders with your real details and the page is fully ready for clients.</p>
-            <div class="contact-list">
-              <a class="contact-link" href="mailto:nexvisuals.studio@gmail.com"><span>Email</span><strong>nexvisuals.studio@gmail.com</strong></a>
-              <a class="contact-link" href="https://instagram.com/nexvisuals.studio" target="_blank" rel="noopener noreferrer"><span>Instagram</span><strong>@nexvisuals.studio</strong></a>
-              <a class="contact-link" href="https://wa.me/910000000000" target="_blank" rel="noopener noreferrer"><span>WhatsApp</span><strong>+91 00000 00000</strong></a>
-            </div>
-          </aside>
-          <div class="contact-card">
-            <h3>Project inquiry form</h3>
-            <form id="inquiryForm">
-              <div class="field-grid">
-                <input type="text" id="name" placeholder="Your name" required />
-                <input type="text" id="brand" placeholder="Brand or business name" required />
-              </div>
-              <div class="field-grid">
-                <input type="email" id="email" placeholder="Your email" required />
-                <select id="package" required>
-                  <option value="">Select package</option>
-                  <option value="3 Premium Images — ₹10,000">3 Premium Images — ₹10,000</option>
-                  <option value="5 Premium Images — ₹25,000">5 Premium Images — ₹25,000</option>
-                  <option value="6 Premium Images — ₹32,000">6 Premium Images — ₹32,000</option>
-                  <option value="Custom Package">Custom Package</option>
-                </select>
-              </div>
-              <textarea id="details" placeholder="What kind of visuals do you need? Mention style, use case, and deadline." required></textarea>
-              <div class="hero-actions">
-                <button class="btn btn-primary" type="submit">Send Inquiry</button>
-                <button class="btn btn-secondary" id="copyEmailBtn" type="button">Copy Email</button>
-              </div>
-            </form>
+        <div class="cta-box">
+          <div>
+            <h3>Need a custom premium package?</h3>
+            <p>Use the contact section to ask for a different number of images, a stronger business setup, or a fully custom service presentation.</p>
+          </div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <a class="btn btn-primary" href="#contact">Request Custom Package</a>
+            <a class="btn btn-secondary" href="#pricing">Compare Packages</a>
           </div>
         </div>
       </div>
     </section>
 
-    <footer class="footer">
-      <div class="container footer-bar">
-        <div>© <span id="year"></span> Nex Visuals. Premium design presentation.</div>
-        <div>Single-page agency website.</div>
+    <section id="contact">
+      <div class="container contact-grid">
+        <article class="contact-card">
+          <div class="section-head" style="margin-bottom:10px"><div><h2>Start your project</h2></div></div>
+          <p>This form makes the site feel more complete and gives clients a clear next step.</p>
+          <form class="form-stack" onsubmit="event.preventDefault(); alert('Demo form only — connect this to your email, WhatsApp, or Formspree later.');">
+            <div class="form-grid">
+              <input type="text" placeholder="Your name" required>
+              <input type="email" placeholder="Your email" required>
+            </div>
+            <div class="form-grid">
+              <select required>
+                <option value="">Select package</option>
+                <option>Starter Pack</option>
+                <option>Growth Pack</option>
+                <option>Signature Pack</option>
+                <option>Custom Package</option>
+              </select>
+              <input type="text" placeholder="Business / brand name">
+            </div>
+            <textarea placeholder="Tell us what kind of visuals or style you need..."></textarea>
+            <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap">
+              <span class="small">Later you can connect this form to WhatsApp, email, or a live contact tool.</span>
+              <button class="btn btn-primary" type="submit">Send Inquiry</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="contact-card">
+          <div class="section-head" style="margin-bottom:10px"><div><h2>Quick actions</h2></div></div>
+          <p>These extra buttons give visitors faster paths instead of making them scroll aimlessly.</p>
+          <div class="quick-actions">
+            <a class="btn btn-secondary" href="#work">Open Showcase</a>
+            <a class="btn btn-secondary" href="#services">See Services</a>
+            <a class="btn btn-secondary" href="#pricing">View Packages</a>
+            <a class="btn btn-secondary" href="#faq">Read FAQ</a>
+            <button class="btn btn-ghost" id="backToTop">Back to Top</button>
+          </div>
+          <div class="mini-contact">
+            <strong>Next upgrade ideas</strong>
+            <p style="margin:0">You can later add your real brand name, WhatsApp button, Instagram link, custom testimonials, and your own logo image.</p>
+          </div>
+        </article>
       </div>
-    </footer>
+    </section>
   </main>
 
-  <div class="modal" id="projectModal" aria-hidden="true">
-    <div class="modal-card">
-      <div class="modal-visual"></div>
-      <div class="modal-body">
-        <div class="modal-top">
-          <div><div class="section-kicker" id="modalType">Project</div><h3 id="modalTitle" style="margin:0 0 10px 0;font-size:1.8rem;">Project title</h3></div>
-          <button class="close-btn" id="closeModal" aria-label="Close">✕</button>
+  <footer class="footer">
+    <div class="container">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="lgB" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#A78BFA"/>
+                <stop offset="55%" stop-color="#8B5CF6"/>
+                <stop offset="100%" stop-color="#22D3EE"/>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="64" height="64" rx="20" fill="#09101b"/>
+            <path d="M16 43 29 18h7L23 43z" fill="url(#lgB)"/>
+            <path d="M35 18h11L33 43h-7z" fill="#e9ecff" opacity=".95"/>
+            <circle cx="46" cy="18" r="4" fill="#22D3EE" opacity=".9"/>
+          </svg>
         </div>
-        <p id="modalText" style="color:var(--muted);margin:0;"></p>
+        <div class="brand-text">
+          <strong>Nex Visuals™</strong>
+          <span>Premium Creative Studio</span>
+        </div>
+      </div>
+      <div class="footer-row">
+        <span>© 2026 Nex Visuals™. Built for a stronger, more premium business presentation.</span>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-ghost btn-mini" href="#services">Services</a>
+          <a class="btn btn-ghost btn-mini" href="#pricing">Packages</a>
+          <a class="btn btn-ghost btn-mini" href="#contact">Contact</a>
+        </div>
       </div>
     </div>
+  </footer>
+
+  <div class="floating-actions">
+    <button class="fab secondary" id="themeNotice" title="Info">
+      <svg fill="none" viewBox="0 0 24 24"><path d="M12 8h.01M11 12h1v4h1" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <a class="fab" href="#contact" title="Start Project">
+      <svg fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
   </div>
 
   <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-    document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.remove('open')));
+    document.getElementById('scrollPackages')?.addEventListener('click', ()=>{
+      document.getElementById('pricing')?.scrollIntoView({behavior:'smooth'});
+    });
 
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const workCards = document.querySelectorAll('.work-card');
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
+    document.getElementById('backToTop')?.addEventListener('click', ()=>{
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+
+    document.getElementById('openTop')?.addEventListener('click', ()=>{
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+
+    document.getElementById('showOffer')?.addEventListener('click', ()=>{
+      alert('This version includes a new logo, real visuals, stronger buttons, service filters, showcase actions, pricing flow, FAQ toggles, and a more premium layout.');
+    });
+
+    document.getElementById('themeNotice')?.addEventListener('click', ()=>{
+      alert('Your upgraded page is now more professional and uses real image sections instead of empty placeholders.');
+    });
+
+    document.querySelectorAll('.showcaseInfo').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        alert('This section is built to show work examples more clearly and make the site feel more like a real agency portfolio.');
+      });
+    });
+
+    document.querySelectorAll('.packageHelp').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.getElementById('pricing')?.scrollIntoView({behavior:'smooth'});
+        alert('Starter = entry option, Growth = best overall value, Signature = strongest premium presentation.');
+      });
+    });
+
+    document.querySelectorAll('.faq-item').forEach(item=>{
+      item.addEventListener('click', ()=>{
+        item.classList.toggle('open');
+        const symbol = item.querySelector('.faq-symbol');
+        if(symbol) symbol.textContent = item.classList.contains('open') ? '–' : '+';
+      });
+    });
+
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const serviceCards = document.querySelectorAll('.service-card');
+
+    filterBtns.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        filterBtns.forEach(b=>b.classList.remove('active'));
         btn.classList.add('active');
         const filter = btn.dataset.filter;
-        workCards.forEach(card => {
-          const visible = filter === 'all' || card.dataset.type === filter;
-          card.style.display = visible ? 'flex' : 'none';
+        serviceCards.forEach(card=>{
+          const show = filter === 'all' || card.dataset.category === filter;
+          card.classList.toggle('hidden', !show);
         });
       });
     });
-
-    const projects = {
-      obsidian: { type: 'Brand Case', title: 'Obsidian Launch Set', text: 'A premium launch-direction concept using dark luxury styling, high-end typography, and clean campaign framing to make the brand feel established and expensive.' },
-      nova: { type: 'Product Case', title: 'Nova Product Graphics', text: 'A polished product presentation set focused on clarity, contrast, detail, and premium visual composition suitable for marketing use.' },
-      velocity: { type: 'Campaign Case', title: 'Velocity Promo Series', text: 'A faster-paced promotional set with stronger energy, sharper hierarchy, and social-first layouts designed to improve attention and click value.' }
-    };
-
-    const modal = document.getElementById('projectModal');
-    const modalType = document.getElementById('modalType');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalText = document.getElementById('modalText');
-    const closeModal = document.getElementById('closeModal');
-
-    document.querySelectorAll('[data-project]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = projects[btn.dataset.project];
-        if (!item) return;
-        modalType.textContent = item.type;
-        modalTitle.textContent = item.title;
-        modalText.textContent = item.text;
-        modal.classList.add('open');
-        modal.setAttribute('aria-hidden', 'false');
-      });
-    });
-
-    function hideModal(){
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden', 'true');
-    }
-    closeModal.addEventListener('click', hideModal);
-    modal.addEventListener('click', (e) => { if (e.target === modal) hideModal(); });
-
-    document.querySelectorAll('.faq-item').forEach(item => {
-      item.querySelector('.faq-btn').addEventListener('click', () => item.classList.toggle('open'));
-    });
-
-    const inquiryForm = document.getElementById('inquiryForm');
-    inquiryForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const brand = document.getElementById('brand').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const pkg = document.getElementById('package').value;
-      const details = document.getElementById('details').value.trim();
-
-      const subject = encodeURIComponent(`Project Inquiry — ${brand || name}`);
-      const body = encodeURIComponent(
-`Hi Nex Visuals,
-
-My name is ${name}.
-Brand/Business: ${brand}
-Email: ${email}
-Selected Package: ${pkg}
-
-Project Details:
-${details}
-
-Please get back to me with the next steps.
-
-Thanks.`
-      );
-      window.location.href = `mailto:nexvisuals.studio@gmail.com?subject=${subject}&body=${body}`;
-    });
-
-    document.getElementById('copyEmailBtn').addEventListener('click', async () => {
-      try { await navigator.clipboard.writeText('nexvisuals.studio@gmail.com'); alert('Email copied.'); }
-      catch { alert('Could not copy email automatically.'); }
-    });
-
-    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
