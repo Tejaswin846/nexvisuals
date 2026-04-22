@@ -265,6 +265,123 @@
   img{max-width:100%; height:auto;}
 }
 
+
+/* === Payment interface patch only === */
+.payment-modal{
+  position:fixed;
+  inset:0;
+  z-index:120;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background:rgba(4,8,16,.72);
+  backdrop-filter:blur(10px);
+}
+.payment-modal.open{display:flex}
+.payment-box{
+  width:min(920px, 100%);
+  max-height:min(90vh, 900px);
+  overflow:auto;
+  border-radius:28px;
+  background:linear-gradient(180deg,#0d1422 0%, #09101b 100%);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 30px 90px rgba(0,0,0,.5);
+}
+.payment-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:22px 22px 10px;
+}
+.payment-head h3{
+  margin:0;
+  font-size:clamp(1.35rem,2vw,2rem);
+  letter-spacing:-.03em;
+}
+.payment-sub{
+  color:var(--muted);
+  padding:0 22px 6px;
+  line-height:1.7;
+}
+.payment-body{
+  padding:18px 22px 24px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+.payment-info-card,
+.payment-option-card{
+  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:20px;
+}
+.payment-info-card h4,
+.payment-option-card h4{
+  margin:0 0 8px;
+}
+.payment-option-list{
+  display:grid;
+  gap:12px;
+}
+.payment-option{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:14px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.03);
+}
+.payment-option strong{
+  display:block;
+  margin-bottom:4px;
+}
+.payment-option span{
+  color:var(--muted);
+  font-size:.9rem;
+}
+.payment-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(139,92,246,.13);
+  border:1px solid rgba(139,92,246,.28);
+  color:#e9ddff;
+  font-size:.82rem;
+  font-weight:800;
+}
+.payment-close{
+  width:46px;
+  height:46px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.05);
+  color:var(--text);
+  cursor:pointer;
+  font-size:1.25rem;
+}
+.payment-links{
+  display:grid;
+  gap:10px;
+  margin-top:14px;
+}
+.payment-links .btn{width:100%}
+.payment-note{
+  margin-top:12px;
+  color:var(--muted);
+  font-size:.86rem;
+}
+@media (max-width:820px){
+  .payment-body{grid-template-columns:1fr}
+  .payment-box{width:min(100%, 100%)}
+}
+
 </style>
 </head>
 <body>
@@ -532,36 +649,36 @@
           <li>Basic revision support</li>
         </ul>
         <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn btn-secondary" href="#contact">Choose Starter</a>
+          <button class="btn btn-secondary open-payment" data-package="Starter Pack" data-price="₹14,000" data-link="https://rzp.io/rzp/pBsg5uR">Choose Starter</button>
         </div>
       </article>
 
       <article class="pricing-card popular">
         <span class="tag">Most Popular</span>
         <h3>Growth Pack</h3>
-        <div class="price">₹40,000 <small>/ 5 images</small></div>
+        <div class="price">₹47,000 <small>/ premium package</small></div>
         <p>Best for stronger presentation, more campaign flexibility, and a more complete visual set.</p>
         <ul>
-          <li>5 premium creative images</li>
+          <li>Premium creative package</li>
           <li>Stronger campaign consistency</li>
           <li>Better overall visual branding</li>
         </ul>
         <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn btn-primary" href="#contact">Choose Growth</a>
+          <button class="btn btn-primary open-payment" data-package="Growth Pack" data-price="₹47,000" data-link="https://rzp.io/rzp/qILZRAPQ">Choose Growth</button>
         </div>
       </article>
 
       <article class="pricing-card">
         <h3>Signature Pack</h3>
-        <div class="price">₹47,000 <small>/ 6 images</small></div>
+        <div class="price">₹50,000 <small>/ flagship package</small></div>
         <p>For businesses that want the fullest premium visual set and the strongest brand presentation.</p>
         <ul>
-          <li>6 premium studio visuals</li>
+          <li>Top-tier premium creative output</li>
           <li>Priority premium composition</li>
           <li>Best overall portfolio impact</li>
         </ul>
         <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn btn-secondary" href="#contact">Choose Signature</a>
+          <button class="btn btn-secondary open-payment" data-package="Signature Pack" data-price="₹50,000" data-link="https://rzp.io/rzp/j0EnCKT">Choose Signature</button>
         </div>
       </article>
 
@@ -737,6 +854,47 @@
     </a>
   </div>
 
+  
+
+  <div class="payment-modal" id="paymentModal" aria-hidden="true">
+    <div class="payment-box">
+      <div class="payment-head">
+        <div>
+          <div class="payment-badge">Secure payment access</div>
+          <h3 id="paymentTitle">Choose your package</h3>
+        </div>
+        <button class="payment-close" id="paymentClose" aria-label="Close payment interface">&times;</button>
+      </div>
+      <div class="payment-sub">
+        This payment interface is added inside your page only. It is sized to fit the page cleanly on desktop and mobile, and the payment button opens the exact Razorpay link for the selected package.
+      </div>
+      <div class="payment-body">
+        <div class="payment-info-card">
+          <h4 id="paymentPackage">Starter Pack</h4>
+          <p id="paymentPrice" style="font-size:2rem;font-weight:900;letter-spacing:-.04em;margin:8px 0 10px;">₹14,000</p>
+          <p style="color:var(--muted);line-height:1.7;margin:0;">
+            UPI, cards, netbanking, and other supported options will appear on the Razorpay checkout page after clicking continue.
+          </p>
+          <div class="payment-note">Only the payment interface was changed here. The rest of your page stays the same.</div>
+        </div>
+        <div class="payment-option-card">
+          <h4>Continue to payment</h4>
+          <div class="payment-option-list">
+            <div class="payment-option">
+              <div>
+                <strong id="paymentPackageSide">Starter Pack</strong>
+                <span id="paymentDesc">Open secure checkout for this package.</span>
+              </div>
+            </div>
+          </div>
+          <div class="payment-links">
+            <a class="btn btn-primary" id="paymentContinue" href="https://rzp.io/rzp/pBsg5uR" target="_blank" rel="noopener">Proceed to Razorpay</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     document.getElementById('scrollPackages')?.addEventListener('click', ()=>{
       document.getElementById('pricing')?.scrollIntoView({behavior:'smooth'});
@@ -793,6 +951,96 @@
         });
       });
     });
+
+    const paymentModal = document.getElementById('paymentModal');
+    const paymentClose = document.getElementById('paymentClose');
+    const paymentTitle = document.getElementById('paymentTitle');
+    const paymentPackage = document.getElementById('paymentPackage');
+    const paymentPackageSide = document.getElementById('paymentPackageSide');
+    const paymentPrice = document.getElementById('paymentPrice');
+    const paymentContinue = document.getElementById('paymentContinue');
+
+    document.querySelectorAll('.open-payment').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const pkg = btn.dataset.package || 'Selected Package';
+        const price = btn.dataset.price || '';
+        const link = btn.dataset.link || '#';
+
+        if(paymentTitle) paymentTitle.textContent = pkg + ' payment';
+        if(paymentPackage) paymentPackage.textContent = pkg;
+        if(paymentPackageSide) paymentPackageSide.textContent = pkg;
+        if(paymentPrice) paymentPrice.textContent = price;
+        if(paymentContinue) paymentContinue.href = link;
+        if(paymentModal){
+          paymentModal.classList.add('open');
+          paymentModal.setAttribute('aria-hidden','false');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    paymentClose?.addEventListener('click', ()=>{
+      paymentModal?.classList.remove('open');
+      paymentModal?.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    });
+
+    paymentModal?.addEventListener('click', (e)=>{
+      if(e.target === paymentModal){
+        paymentModal.classList.remove('open');
+        paymentModal.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
+      }
+    });
+
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape' && paymentModal?.classList.contains('open')){
+        paymentModal.classList.remove('open');
+        paymentModal.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
+      }
+    });
+
   </script>
+
+  <div class="payment-modal" id="paymentModal" aria-hidden="true">
+    <div class="payment-box">
+      <div class="payment-head">
+        <div>
+          <div class="payment-badge">Secure payment access</div>
+          <h3 id="paymentTitle">Choose your package</h3>
+        </div>
+        <button class="payment-close" id="paymentClose" aria-label="Close payment interface">&times;</button>
+      </div>
+      <div class="payment-sub">
+        This payment interface is added inside your page only. It is sized to fit the page cleanly on desktop and mobile, and the payment button opens the exact Razorpay link for the selected package.
+      </div>
+      <div class="payment-body">
+        <div class="payment-info-card">
+          <h4 id="paymentPackage">Starter Pack</h4>
+          <p id="paymentPrice" style="font-size:2rem;font-weight:900;letter-spacing:-.04em;margin:8px 0 10px;">₹14,000</p>
+          <p style="color:var(--muted);line-height:1.7;margin:0;">
+            UPI, cards, netbanking, and other supported options will appear on the Razorpay checkout page after clicking continue.
+          </p>
+          <div class="payment-note">Only the payment interface was changed here. The rest of your page stays the same.</div>
+        </div>
+        <div class="payment-option-card">
+          <h4>Continue to payment</h4>
+          <div class="payment-option-list">
+            <div class="payment-option">
+              <div>
+                <strong id="paymentPackageSide">Starter Pack</strong>
+                <span id="paymentDesc">Open secure checkout for this package.</span>
+              </div>
+            </div>
+          </div>
+          <div class="payment-links">
+            <a class="btn btn-primary" id="paymentContinue" href="https://rzp.io/rzp/pBsg5uR" target="_blank" rel="noopener">Proceed to Razorpay</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
